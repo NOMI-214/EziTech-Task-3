@@ -12,7 +12,6 @@ import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import PropertyDetailPage from "./pages/PropertyDetailPage";
 
-// Home Page Component
 const HomePage = () => (
   <div className="App overflow-x-hidden">
     <Navbar />

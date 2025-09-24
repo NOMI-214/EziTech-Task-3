@@ -10,7 +10,6 @@ const Navbar = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Handle scroll effect for navbar background
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -20,7 +19,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (isMobileMenuOpen && !event.target.closest(".navbar-container")) {
@@ -34,18 +32,15 @@ const Navbar = () => {
 
   const handleLoadingClick = (path) => {
     setIsLoading(true);
-    setIsMobileMenuOpen(false); // Close mobile menu when navigating
+    setIsMobileMenuOpen(false);
     setTimeout(() => {
       setIsLoading(false);
       navigate(path);
-      // If navigating to home page, ensure we're in grid view and scroll to hero
       if (path === "/") {
         setTimeout(() => {
-          // Reset to grid view if we're in PropertyList view
           const event = new CustomEvent("resetToGridView");
           window.dispatchEvent(event);
 
-          // Scroll to hero section
           const heroSection = document.querySelector(".hero-section");
           if (heroSection) {
             heroSection.scrollIntoView({ behavior: "auto" });
